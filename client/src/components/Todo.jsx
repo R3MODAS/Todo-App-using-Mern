@@ -17,11 +17,10 @@ const Todo = () => {
     const [ItemId, setItemId] = useState(null);
     const [Loading, setLoading] = useState(false)
 
-    axios.defaults.withCredentials = true;
-
     useEffect(() => {
+        axios.defaults.withCredentials = true;
         axios
-            .get(`${BASE_URL}/get`)
+            .get(`${BASE_URL}/api/get`)
             .then((res) => setTodoList(res.data))
             .catch((err) => console.log(err))
     }, [Loading])
@@ -31,7 +30,7 @@ const Todo = () => {
         e.preventDefault();
         if(InputTask){
             axios
-            .post(`${BASE_URL}/create`, {todoItem: InputTask})
+            .post(`${BASE_URL}/api/create`, {todoItem: InputTask})
             .then((res) => {
                 console.log(res.data)
                 setLoading(!Loading)
@@ -48,7 +47,7 @@ const Todo = () => {
     const handleEdit = () => {
         if(InputTask && !ToggleBtn){
             axios
-            .put(`${BASE_URL}/update/${ItemId}`, {todoItem: InputTask})
+            .put(`${BASE_URL}/api/update/${ItemId}`, {todoItem: InputTask})
             .then((res) => {
                 console.log(res.data)
                 setLoading(!Loading)
@@ -65,7 +64,7 @@ const Todo = () => {
     // Delete a Task
     const handleDelete = (id) => {
         axios
-        .delete(`${BASE_URL}/delete/${id}`)
+        .delete(`${BASE_URL}/api/delete/${id}`)
         .then((res) => {
             console.log(res.data)
             setLoading(!Loading)
@@ -75,7 +74,7 @@ const Todo = () => {
 
     // Clears all the Task
     const handleClear = () => {
-        axios.delete(`${BASE_URL}/clear`)
+        axios.delete(`${BASE_URL}/api/clear`)
         .then((res) => {
             console.log(res.data)
             setLoading(!Loading)
