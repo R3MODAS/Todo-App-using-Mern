@@ -4,7 +4,7 @@ import cors from "cors"
 const app = express()
 
 app.use(cors({
-    origin: '',
+    origin: ['https://todo-app-frontend-remo.vercel.app'],
     credentials: true
 }))
 app.use(express.json())

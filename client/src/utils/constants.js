@@ -1,1 +1,1 @@
-export const BASE_URL = `https://todo-app-backend-remo.vercel.app`
+export const BASE_URL = `https://todo-app-api-remo.vercel.app`
