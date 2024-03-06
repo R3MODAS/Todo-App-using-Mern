@@ -1,10 +1,9 @@
 import dotenv from "dotenv"
 import { connectDB } from "./db/index.js"
 import { app } from "./app.js"
+import { router } from "./routes/index.js"
 
-dotenv.config({
-    path: "./env"
-})
+dotenv.config()
 
 const PORT = process.env.PORT
 
@@ -13,6 +12,7 @@ connectDB()
     app.on("error", (err) => {
         console.log(err)
     })
+    app.use("/api", router)
     app.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`))
 })
 .catch((err) => {

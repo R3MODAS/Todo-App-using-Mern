@@ -1,12 +1,13 @@
 {
     "version":2,
+    "name" : "todo-app-backend",
     "builds": [
       { "src": "*.js", "use": "@vercel/node" }
     ],
     "routes": [
         {
           "src": "/(.*)",
-          "dest": "/"
+          "dest": "/index.js"
         }
     ]
   }
