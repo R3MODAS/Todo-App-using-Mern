@@ -1,10 +1,10 @@
 import { Todo } from "../models/todo.models.js";
 
 const getTodos = async (req, res) => {
-    try{
+    try {
         const todoList = await Todo.find()
-        res.status(201).send(todoList)   
-    }catch(err){
+        res.status(201).send(todoList)
+    } catch (err) {
         console.log(err)
         res.status(400).json({
             message: err
@@ -52,7 +52,7 @@ const deleteTodo = async (req, res) => {
     }
 }
 
-const clearTodos = async (req,res) => {
+const clearTodos = async (req, res) => {
     try {
         await Todo.deleteMany()
         res.status(200).send("Deleted Successfully!!")

@@ -19,7 +19,7 @@ const Todo = () => {
 
     useEffect(() => {
         axios
-            .get(`${BASE_URL}/api/get`)
+            .get(`${BASE_URL}/api/`)
             .then((res) => setTodoList(res.data))
             .catch((err) => console.log(err))
     }, [Loading])
