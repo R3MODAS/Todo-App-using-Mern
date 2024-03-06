@@ -17,6 +17,8 @@ const Todo = () => {
     const [ItemId, setItemId] = useState(null);
     const [Loading, setLoading] = useState(false)
 
+    axios.defaults.withCredentials = true;
+
     useEffect(() => {
         axios
             .get(`${BASE_URL}/get`)
