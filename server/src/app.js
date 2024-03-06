@@ -3,10 +3,8 @@ import cors from "cors"
 
 const app = express()
 
-app.use(cors({
-    origin: ['https://todo-app-frontend-remo.vercel.app'],
-    credentials: true
-}))
-app.use(express.json())
+app.use(cors({ credentials: true, origin: process.env.CORS_ORIGIN }))
+app.use(express.json({ limit: "16kb" }))
+app.use(express.urlencoded({ extended: true, limit: "16kb" }))
 
 export { app }

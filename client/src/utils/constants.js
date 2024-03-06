@@ -1,1 +1,1 @@
-export const BASE_URL = `https://todo-app-api-remo.vercel.app`
+export const BASE_URL = `http://localhost:${import.meta.env.VITE_PORT}/api`

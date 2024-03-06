@@ -14,7 +14,8 @@ connectDB()
     app.on("error", (err) => {
         console.log(err)
     })
-    app.listen(PORT, () => console.log(`Server started at ${PORT}`))
+    app.use("/api", router)
+    app.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`))
 })
 .catch((err) => {
     console.log("MongoDB connection failed :",err)

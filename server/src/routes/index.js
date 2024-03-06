@@ -3,11 +3,6 @@ import { clearTodos, createTodo, deleteTodo, getTodos, updateTodo } from "../con
 
 const router = express.Router()
 
-router.get("/", (req,res) => {
-    res.json({
-        message: "Hello"
-    })
-})
 router.get("/get", getTodos)
 router.post("/create", createTodo)
 router.put("/update/:id", updateTodo)

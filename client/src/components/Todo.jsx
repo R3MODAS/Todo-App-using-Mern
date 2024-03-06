@@ -18,7 +18,6 @@ const Todo = () => {
     const [Loading, setLoading] = useState(false)
 
     useEffect(() => {
-        axios.defaults.withCredentials = true;
         axios
             .get(`${BASE_URL}/get`)
             .then((res) => setTodoList(res.data))
