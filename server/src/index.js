@@ -14,7 +14,6 @@ connectDB()
     app.on("error", (err) => {
         console.log(err)
     })
-    app.use("/api", router)
     app.listen(PORT, () => console.log(`Server started at ${PORT}`))
 })
 .catch((err) => {
