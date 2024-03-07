@@ -7,7 +7,6 @@ import {
 import { BsTrash3Fill } from "react-icons/bs";
 import { RiEditCircleLine } from "react-icons/ri";
 import axios from "axios"
-import { BASE_URL } from "../utils/constants";
 
 const Todo = () => {
     // Local State variables
