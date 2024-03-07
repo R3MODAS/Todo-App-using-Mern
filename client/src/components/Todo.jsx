@@ -10,12 +10,14 @@ import axios from "axios"
 import { BASE_URL } from "../utils/constants";
 
 const Todo = () => {
-    // Local State
+    // Local State variables
     const [TodoList, setTodoList] = useState([]);
     const [InputTask, setInputTask] = useState("");
     const [ToggleBtn, setToggleBtn] = useState(true);
     const [ItemId, setItemId] = useState(null);
     const [Loading, setLoading] = useState(false)
+
+    const BASE_URL = import.meta.env.VITE_BASE_URL
 
     useEffect(() => {
         axios
@@ -31,7 +33,6 @@ const Todo = () => {
             axios
             .post(`${BASE_URL}/api/create`, {todoItem: InputTask})
             .then((res) => {
-                console.log(res.data)
                 setLoading(!Loading)
                 setInputTask("")
             })
@@ -48,7 +49,6 @@ const Todo = () => {
             axios
             .put(`${BASE_URL}/api/update/${ItemId}`, {todoItem: InputTask})
             .then((res) => {
-                console.log(res.data)
                 setLoading(!Loading)
                 setInputTask("")
                 setItemId(null)
@@ -65,7 +65,6 @@ const Todo = () => {
         axios
         .delete(`${BASE_URL}/api/delete/${id}`)
         .then((res) => {
-            console.log(res.data)
             setLoading(!Loading)
         })
         .catch((err) => console.log(err))
@@ -75,7 +74,6 @@ const Todo = () => {
     const handleClear = () => {
         axios.delete(`${BASE_URL}/api/clear`)
         .then((res) => {
-            console.log(res.data)
             setLoading(!Loading)
         })
         .catch((err) => {
