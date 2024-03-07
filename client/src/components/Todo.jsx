@@ -7,6 +7,7 @@ import {
 import { BsTrash3Fill } from "react-icons/bs";
 import { RiEditCircleLine } from "react-icons/ri";
 import axios from "axios"
+import { BASE_URL } from "../utils/constants"
 
 const Todo = () => {
     // Local State variables
@@ -15,8 +16,6 @@ const Todo = () => {
     const [ToggleBtn, setToggleBtn] = useState(true);
     const [ItemId, setItemId] = useState(null);
     const [Loading, setLoading] = useState(false)
-
-    const BASE_URL = import.meta.env.VITE_BASE_URL
 
     useEffect(() => {
         axios
@@ -28,56 +27,56 @@ const Todo = () => {
     // Adds a Task
     const handleAdd = (e) => {
         e.preventDefault();
-        if(InputTask){
+        if (InputTask) {
             axios
-            .post(`${BASE_URL}/api/create`, {todoItem: InputTask})
-            .then((res) => {
-                setLoading(!Loading)
-                setInputTask("")
-            })
-            .catch((err) => console.log(err))
+                .post(`${BASE_URL}/api/create`, { todoItem: InputTask })
+                .then((res) => {
+                    setLoading(!Loading)
+                    setInputTask("")
+                })
+                .catch((err) => console.log(err))
         }
-        else{
+        else {
             alert("Please Enter the Task")
         }
     };
 
     // Edit a Task
     const handleEdit = () => {
-        if(InputTask && !ToggleBtn){
+        if (InputTask && !ToggleBtn) {
             axios
-            .put(`${BASE_URL}/api/update/${ItemId}`, {todoItem: InputTask})
-            .then((res) => {
-                setLoading(!Loading)
-                setInputTask("")
-                setItemId(null)
-                setToggleBtn(true)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+                .put(`${BASE_URL}/api/update/${ItemId}`, { todoItem: InputTask })
+                .then((res) => {
+                    setLoading(!Loading)
+                    setInputTask("")
+                    setItemId(null)
+                    setToggleBtn(true)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         }
     }
 
     // Delete a Task
     const handleDelete = (id) => {
         axios
-        .delete(`${BASE_URL}/api/delete/${id}`)
-        .then((res) => {
-            setLoading(!Loading)
-        })
-        .catch((err) => console.log(err))
+            .delete(`${BASE_URL}/api/delete/${id}`)
+            .then((res) => {
+                setLoading(!Loading)
+            })
+            .catch((err) => console.log(err))
     }
 
     // Clears all the Task
     const handleClear = () => {
         axios.delete(`${BASE_URL}/api/clear`)
-        .then((res) => {
-            setLoading(!Loading)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then((res) => {
+                setLoading(!Loading)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     };
 
     // Handle Edit Task
